@@ -37,7 +37,7 @@ var DinnerModel = function() {
                 alert('success');
                 
                 _this.dishCashe = data.Results;
-                console.log("b", _this.dishCashe);
+                console.log("b", _this.dishCashe[0]['Title'] );
                 _this.dishCasheChanged.notifyObservers();
                 return data.Results;
             }
