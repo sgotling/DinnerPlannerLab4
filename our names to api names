@@ -1,0 +1,13 @@
+id = RecipeID
+type = Category
+name = Title
+image = ImageURL
+description = ????
+ingredients = ????
+
+
+step 2
+	-	add loading message
+	-	add error handling
+		-	no intenet contection
+		-	no results

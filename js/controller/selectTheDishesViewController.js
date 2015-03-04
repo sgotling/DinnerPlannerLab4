@@ -1,4 +1,4 @@
-var SelectTheDishesViewController = function (view) {
+var SelectTheDishesViewController = function (view, model) {
 
 	var _this = this;
 
@@ -6,7 +6,7 @@ var SelectTheDishesViewController = function (view) {
 	// startToSelectDishButtonClicked
 	$("#startToSelectDishButton").click(function () {
 		view.show();
-		view.updateImages();
+		model.getAllDishesApi();
 	});
 
 	$("#dishInformationToSelectDishButton").click(function () {

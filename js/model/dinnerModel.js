@@ -13,6 +13,47 @@ var DinnerModel = function() {
     this.menuChanged = new Event();
     this.selectedDishChanged = new Event();
 
+
+
+
+    ////////////////////////////////////////////////////
+    /////////////DETTA HAR JAG LAGT TILL////////////////
+    var _this = this;
+    this.dishCasheChanged = new Event();
+    this.dishCashe = [];
+
+    this.getAllDishesApi = function() {
+        var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
+        var titleKeyword = "appetizer";
+        var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
+                  + titleKeyword 
+                  + "&api_key="+apiKey;
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            cache: false,
+            url: url,
+            success: function (data) {
+                alert('success');
+                
+                _this.dishCashe = data.Results;
+                console.log("b", _this.dishCashe);
+                _this.dishCasheChanged.notifyObservers();
+                return data.Results;
+            }
+        });
+    }
+
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
+
+
+
+
+
+
+
+
     this.setSelectedDish = function (dishId) {
     	this.selectedDish = dishId;
     	this.selectedDishChanged.notifyObservers();
