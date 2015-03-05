@@ -26,7 +26,7 @@ var SelectTheDishesView = function (model) {
  		var selectedType = $("#selectTypeForm").val()
  		// var dishes = model.getAllDishes(selectedType, $("#searchBar").val());
 		var dishes = model.dishCashe;
-		console.log(dishes);
+		//console.log(dishes);
 		while(index < dishes.length){
 			$('#selectPICTdish').append("<div class='img'>" +
 			"<a id='" + dishes[index].RecipeID + " ' class='clickAbleDish'>" +
@@ -38,6 +38,9 @@ var SelectTheDishesView = function (model) {
 		// denna ska egentligen inte ligga här men jag får den inte att funka annars.........
 		$(".clickAbleDish").on("click", function(evt){
 		model.setSelectedDish($(this).attr("id"));
+		//console.log(model.selectedDish);
+
+		model.getDishByID();
 	});
 
  	}// updateImages

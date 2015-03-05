@@ -11,6 +11,10 @@ var SelectedDishInformationView = function (model) {
 		_this.addDishInformation();
 	});
 
+	model.selectedDishCollected.addObserver(function () {
+		_this.addDishInformation();
+	})
+
 	this.show = function () {
 		$("#selectedDishInformation").show();
 	}
@@ -18,21 +22,23 @@ var SelectedDishInformationView = function (model) {
 		$("#selectedDishInformation").hide();
 	}
 
-	this.addDishInformation = function () {
+	this.addDishInformation = function (dish) {
 		$('#dishInformaiton').empty();
 		$('#tableElement').empty();
 		var selectedDishId = model.selectedDish;
 		var selectedDish = model.getDish(selectedDishId);
+		console.log("dish ", dish);
+		selectedDish = dish;
 
-	  $('#dishInformaiton').append(" <h1 id='dishHead'>" + selectedDish.name + "</h1>" +
-      	"<div width='100%' id='dishImage'></div><h4>PREPARATION</h4>" + selectedDish.description);
-	   $('#dishImage').append("<img src='images/" + selectedDish.image + "' alt='Klematis' class='img-thumbnail' width='304' height='236'>");
+	  $('#dishInformaiton').append(" <h1 id='dishHead'>" + selectedDish.Title + "</h1>" +
+      	"<div width='100%' id='dishImage'></div><h4>PREPARATION</h4>" + selectedDish.Description);
+	   $('#dishImage').append("<img src='images/" + selectedDish.ImageURL + "' alt='Klematis' class='img-thumbnail' width='304' height='236'>");
 	  	
 	  var i = 0;
-	  while(i < selectedDish.ingredients.length){
-	    $('#tableElement').append('<tr><td>' + selectedDish.ingredients[i].quantity + 
-	     " " + selectedDish.ingredients[i].unit + '</td><td>' + selectedDish.ingredients[i].name + '</td>' +
-	     '<td>' + selectedDish.ingredients[i].price + " SEK" + '</td></tr>');
+	  while(i < selectedDish.Ingredients.length){
+	    $('#tableElement').append('<tr><td>' + selectedDish.Ingredients[i].MetricDisplayQuantity+ 
+	     " " + selectedDish.ingredients[i].MetricUnit + '</td><td>' + selectedDish.ingredients[i].Name + '</td>' +
+	     '<td>' + selectedDish.ingredients[i].MetricQuantity + " SEK" + '</td></tr>');
 	    i++;
 	  }
 	 

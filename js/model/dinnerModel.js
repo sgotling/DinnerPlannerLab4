@@ -22,9 +22,11 @@ var DinnerModel = function() {
     this.dishCasheChanged = new Event();
     this.dishCashe = [];
 
+
     this.getAllDishesApi = function() {
         var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
         var titleKeyword = "appetizer";
+        // var titleKeyword = "main course";
         var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
                   + titleKeyword 
                   + "&api_key="+apiKey;
@@ -44,6 +46,31 @@ var DinnerModel = function() {
         });
     }
 
+    	this.selectedDishCollected = new Event();
+    	this.collectedDish = [];
+
+        this.getDishByID = function() {
+
+	       var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
+		// var recipeID = this.selectedDish;
+		// console.log(recipeID);
+		var recipeID = 179434;
+
+		var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
+		$.ajax({
+	         type: "GET",
+	         dataType: 'json',
+	         cache: false,
+	         url: url,
+	         success: function (data) {
+	
+	            this.collectedDish = data;
+	            console.log(this.collectedDish);
+	            _this.selectedDishCollected.notifyObservers(_this.collectedDish);
+	            }
+	         });
+	       }
+
     ////////////////////////////////////////////
     ////////////////////////////////////////////
 
@@ -56,7 +83,8 @@ var DinnerModel = function() {
 
     this.setSelectedDish = function (dishId) {
     	this.selectedDish = dishId;
-    	this.selectedDishChanged.notifyObservers();
+    	// console.log("tryckte på bilden ", this.selectedDish)
+    	//this.selectedDishChanged.notifyObservers();
     }
 
 

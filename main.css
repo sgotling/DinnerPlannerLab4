@@ -59,7 +59,7 @@ body{
     border: 2px solid;
     background: rgba(255, 255, 255, 0.8);
     padding: 10pt; 
-    height: 500pt;
+    height: 450pt;
     overflow: scroll;;
 }
 
@@ -67,8 +67,8 @@ div.img {
     margin: 5px;
     padding: 5px;
     border: 1px solid #0000ff;
-    height: 125pt;
-    width: 100pt;
+    height: 150pt;
+    width: 110pt;
     float: left;
     text-align: center;
     overflow: auto;
