@@ -6,7 +6,7 @@ var SelectTheDishesViewController = function (view, model) {
 	// startToSelectDishButtonClicked
 	$("#startToSelectDishButton").click(function () {
 		view.show();
-		model.getAllDishesApi();
+		model.getAllDishesApi("appetizer");
 	});
 
 	$("#dishInformationToSelectDishButton").click(function () {
@@ -21,6 +21,7 @@ var SelectTheDishesViewController = function (view, model) {
 	});
 
 	$("#selectTypeForm").change(function () {
+		model.getAllDishesApi($("#selectTypeForm").val());
 		view.updateImages();
 	});
 

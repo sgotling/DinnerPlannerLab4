@@ -25,9 +25,9 @@ var DinnerModel = function() {
 
 
 
-    this.getAllDishesApi = function() {
+    this.getAllDishesApi = function(titleKeyword) {
         var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
-        var titleKeyword = "appetizer";
+        // var titleKeyword = "appetizer";
         // var titleKeyword = "main course";
         var url = "http://api.bigoven.com/recipes?pg=1&rpp=25&title_kw="
                   + titleKeyword 
@@ -52,12 +52,12 @@ var DinnerModel = function() {
     	this.connectingToAPI = new Event();
     	this.collectedDish = "hhhhh";
 
-        this.getDishByID = function() {
+        this.getDishByID = function(recipeID) {
 
 	       var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
 		// var recipeID = this.selectedDish;
 		// console.log(recipeID);
-		var recipeID = 179434;
+		// var recipeID = 179434;
 
 		var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
 		$.ajax({
@@ -69,7 +69,6 @@ var DinnerModel = function() {
 	         success: function (data) {
 	
 	            _this.collectedDish = data;
-	            console.log("i model ", this.collectedDish);
 	            _this.dishCash = data;
 	            _this.selectedDishCollected.notifyObservers(data);
 	            }
@@ -233,31 +232,36 @@ while(index < menu.length){
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
-	  return $(dishes).filter(function(index,dish) {
+		
+		 // return _this.dishCash;
+	  return $(_this.dishCash).filter(function(index,dish) {
 		var found = true;
 		if(filter){
 			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
+			if(dish.Ingredients) {
+				$.each(dish.Ingredients,function(index,ingredient) {
+					if(ingredient.Name.indexOf(filter)!=-1) {
+						found = true;
+					}
+				});
+			}
+			if(dish.Title.indexOf(filter) != -1)
 			{
 				found = true;
 			}
 		}
-	  	return dish.type == type && found;
+	  	// return dish.Category == type && found;
+	  	return found;
 	  });	
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
+	 //  for(key in _this.dishCash){
+		// 	if(_this.dishCash[key].RecipeID == id) {
+		// 		return _this.dishCash[key];
+		// 	}
+		// }
 	}
 }
 

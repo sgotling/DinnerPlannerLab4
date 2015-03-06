@@ -19,20 +19,20 @@ var DinnerPreparationView = function(model){
     $('#preparationList').append("<div class='col-sm-12 dishPreparation'>" +
         "<div class='col-sm-6' id='pictAndDescrip'>" +
           "<div class='col-sm-6' style='padding:10pt' id='pict'>" +
-              "<img src='images/" + menu[i].image +"' width='110' height='90'>" +
+              "<img src='" + menu[i].ImageURL +"' width='110' height='90'>" +
           "</div>" +
           "<div class='col-sm-6' id='descrip'>" +
             "<p>" +
-              "<h3>" + menu[i].name + "</h3>" +
+              "<h3>" + menu[i].Title + "</h3>" +
             "</p>" +
             "<p>" +
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."+
+              menu[i].Description +
             "</p></div></div>" +
         "<div class='col-sm-6' id='preparation'>" +
           "<p>" +
             "<h4>PREPARATION</h4>" +
           "</p><p>" +
-          menu[i].description +
+          menu[i].Instructions +
           "</p></div></div>");
     i++;
     }

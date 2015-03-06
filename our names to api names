@@ -2,7 +2,8 @@ id = RecipeID
 type = Category
 name = Title
 image = ImageURL
-description = Description
+description = Instructions
+Description (new)
 ingredients = Ingredients
 	name = Name
 	quantity (Str) = MetricDisplayQuantity

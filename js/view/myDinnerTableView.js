@@ -26,7 +26,6 @@
 	    while(i < menu.length){
 	      var price=0;
 	      var j = 0;
-	      console.log("menu[i] ", menu[i])
 	      while(j < menu[i].Ingredients.length){
 	        price = price + menu[i].Ingredients[j].MetricQuantity;
 	        j++;
@@ -44,7 +43,6 @@
     	// Denna ska egentligen inte liggga här
     	$(".removeDish").on('click',function () {
 	        id = parseInt(this.id);
-	        console.log("id in view", id);
 	        model.removeDishFromMenu(id);
 	      });
 

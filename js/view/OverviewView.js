@@ -16,12 +16,12 @@ var DinnerOverviewView = function(model) {
 var index = 0;
 		while(index < menu.length){
 		    $('#overviewPict').append("<div class='img'>" +
-			"<a id='" + menu[index].id + "' class='clickAbleDish'>" +
-				"<img src=" + "images/" + menu[index].image + " width='110' height='90'>" +
-				"<div class='desc'>" + menu[index].name + "</div>" + 
+			"<a id='" + menu[index].RecipeID + "' class='clickAbleDish'>" +
+				"<img src=" + menu[index].ImageURL + " width='110' height='90'>" +
+				"<div class='desc'>" + menu[index].Title + "</div>" + 
 			"</div>" +
 			"<script>" +
-			"$('#" + menu[index].name + "').click(function() {" +
+			"$('#" + menu[index].Title + "').click(function() {" +
 			"});" +
 			"</script>");
 			index++;

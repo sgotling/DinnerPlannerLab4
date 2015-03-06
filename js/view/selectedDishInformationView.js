@@ -18,15 +18,13 @@ var SelectedDishInformationView = function (model) {
 	this.addDishInformation = function (dish) {
 		$('#dishInformaiton').empty();
 		$('#tableElement').empty();
-		var selectedDishId = model.selectedDish;
-		var selectedDish = model.getDish(selectedDishId);
+		// var selectedDishId = model.selectedDish;
+		// var selectedDish = model.getDish(selectedDishId);
 		// console.log("dish ", dish);
 		selectedDish = dish;
-		console.log("selectedDish in view", selectedDish);
 	  $('#dishInformaiton').append(" <h1 id='dishHead'>" + selectedDish.Title + "</h1>" +
-      	"<div width='100%' id='dishImage'></div><h4>PREPARATION</h4>" + selectedDish.Description);
+      	"<div width='100%' id='dishImage'></div><h4>PREPARATION</h4>" + selectedDish.Instructions);
 	   $('#dishImage').append("<img src='" + selectedDish.ImageURL + "' alt='Klematis' class='img-thumbnail' width='304' height='236'>");
-	  	console.log("Ä*********", selectedDish);
 	  var i = 0;
 	  while(i < selectedDish.Ingredients.length){
 	    $('#tableElement').append('<tr><td>' + selectedDish.Ingredients[i].MetricDisplayQuantity+ 

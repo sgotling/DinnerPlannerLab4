@@ -27,12 +27,12 @@ var SelectTheDishesView = function (model) {
  		$("#selectPICTdish").empty();
  		var index = 0;
  		var selectedType = $("#selectTypeForm").val()
- 		// var dishes = model.getAllDishes(selectedType, $("#searchBar").val());
-		var dishes = model.dishCash;
+ 		var dishes = model.getAllDishes(selectedType, $("#searchBar").val());
+		// var dishes = model.dishCash;
 		//console.log(dishes);
 		while(index < dishes.length){
 			$('#selectPICTdish').append("<div class='img'>" +
-			"<a id='" + dishes[index].RecipeID + " ' class='clickAbleDish'>" +
+			"<a id='" + dishes[index].RecipeID + "' class='clickAbleDish'>" +
 			  "<img  src=" + dishes[index].ImageURL + " width='110' height='90'>" +
 			  "<div class='desc'>" + dishes[index].Title + "</div>" + 
 			"</div>");
@@ -42,8 +42,7 @@ var SelectTheDishesView = function (model) {
 		$(".clickAbleDish").on("click", function(evt){
 		model.setSelectedDish($(this).attr("id"));
 		//console.log(model.selectedDish);
-
-		model.getDishByID();
+		model.getDishByID($(this).attr("id"));
 	});
  	}// updateImages
 
