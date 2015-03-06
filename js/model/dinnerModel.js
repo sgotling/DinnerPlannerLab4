@@ -20,7 +20,9 @@ var DinnerModel = function() {
     /////////////DETTA HAR JAG LAGT TILL////////////////
     var _this = this;
     this.dishCasheChanged = new Event();
-    this.dishCashe = [];
+    this.dishCash = {};
+
+
 
 
     this.getAllDishesApi = function() {
@@ -38,8 +40,8 @@ var DinnerModel = function() {
             success: function (data) {
                 alert('success');
                 
-                _this.dishCashe = data.Results;
-                console.log("b", _this.dishCashe[0]['Title'] );
+                 _this.dishCash = data.Results;
+                // console.log("b", _this.dishCashe[0]['Title'] );
                 _this.dishCasheChanged.notifyObservers();
                 return data.Results;
             }
@@ -47,7 +49,8 @@ var DinnerModel = function() {
     }
 
     	this.selectedDishCollected = new Event();
-    	this.collectedDish = [];
+    	this.connectingToAPI = new Event();
+    	this.collectedDish = "hhhhh";
 
         this.getDishByID = function() {
 
@@ -62,11 +65,13 @@ var DinnerModel = function() {
 	         dataType: 'json',
 	         cache: false,
 	         url: url,
+	         // connectingToAPI.notifyObservers();
 	         success: function (data) {
 	
-	            this.collectedDish = data;
-	            console.log(this.collectedDish);
-	            _this.selectedDishCollected.notifyObservers(_this.collectedDish);
+	            _this.collectedDish = data;
+	            console.log("i model ", this.collectedDish);
+	            _this.dishCash = data;
+	            _this.selectedDishCollected.notifyObservers(data);
 	            }
 	         });
 	       }
@@ -139,7 +144,7 @@ var DinnerModel = function() {
 	
 	for(dish in menu){
 		
-	    dish_list.push(menu[dish].ingredients);
+	    dish_list.push(menu[dish].Ingredients);
 	}
 	return dish_list;
 	}
@@ -157,7 +162,7 @@ var DinnerModel = function() {
 	    while(i < ingredients.length){
 		for(ing in ingredients[i]){
 			
-		    totalPrice += ingredients[i][ing].price;
+		    totalPrice += ingredients[i][ing].MetricQuantity;
 
 
 		}
@@ -173,12 +178,14 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2
+		// Category: "Appetizers"
 	    var dish;
 	    var index = 0;
 	    dish = this.getDish(id);
-	    var type = dish.type;
+	    dish = _this.collectedDish;
+	    var type = dish.Category;
 while(index < menu.length){
-	if(type === menu[index].type) {
+	if(type === menu[index].Category) {
 		menu.splice(index,1);
 		
 	}
@@ -211,7 +218,7 @@ while(index < menu.length){
 
 	     for(dish in menu){
 
-			if(menu[dish].id === id) {
+			if(menu[dish].RecipeID === id) {
 			    menu.splice(index,1);
 			}
 		 else{

@@ -26,13 +26,14 @@
 	    while(i < menu.length){
 	      var price=0;
 	      var j = 0;
-	      while(j < menu[i].ingredients.length){
-	        price = price + menu[i].ingredients[j].price;
+	      console.log("menu[i] ", menu[i])
+	      while(j < menu[i].Ingredients.length){
+	        price = price + menu[i].Ingredients[j].MetricQuantity;
 	        j++;
 	      }
-	      $('#menuDishes').append('<tr><td>' + menu[i].type + '</td><td>' 
-	      + menu[i].name + '</td><td>' + price * numberOfGuests + ' SEK' 
-	      + '</td><td><button id="' + menu[i].id + '" type="button" class="btn btn-danger removeDish">X</button></td></tr>');
+	      $('#menuDishes').append('<tr><td>' + menu[i].Category + '</td><td>' 
+	      + menu[i].Title + '</td><td>' + price * numberOfGuests + ' SEK' 
+	      + '</td><td><button id="' + menu[i].RecipeID + '" type="button" class="btn btn-danger removeDish">X</button></td></tr>');
 	      i++;
 	    while(i > menu.length){
 	      var price=0;
@@ -43,6 +44,7 @@
     	// Denna ska egentligen inte liggga här
     	$(".removeDish").on('click',function () {
 	        id = parseInt(this.id);
+	        console.log("id in view", id);
 	        model.removeDishFromMenu(id);
 	      });
 

@@ -19,13 +19,16 @@ var SelectTheDishesView = function (model) {
  		$("#selectTheDishesDiv").hide();
  	}// hideMyDinnerTable end
 
+ 	this.waitingForAPIData = function () {
+ 		// body...
+ 	}
 
  	this.updateImages = function () {
  		$("#selectPICTdish").empty();
  		var index = 0;
  		var selectedType = $("#selectTypeForm").val()
  		// var dishes = model.getAllDishes(selectedType, $("#searchBar").val());
-		var dishes = model.dishCashe;
+		var dishes = model.dishCash;
 		//console.log(dishes);
 		while(index < dishes.length){
 			$('#selectPICTdish').append("<div class='img'>" +
@@ -42,8 +45,10 @@ var SelectTheDishesView = function (model) {
 
 		model.getDishByID();
 	});
-
  	}// updateImages
+
+
+ 	model.selectedDishCollected.addObserver(_this.hide);
 }// SelectTheDishesView end
 
 
