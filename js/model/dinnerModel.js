@@ -46,8 +46,10 @@ var DinnerModel = function() {
                 return data.Results;
             },
             error: function (xhr){
+            	$("#noConnection").show();
                 $("#BubblingLoad1").hide();
-            	alert("Unknown error" + xhr.status)
+                // alert("hej")
+            	// alert("Unknown error" + xhr.status)
             }
         });
     }
