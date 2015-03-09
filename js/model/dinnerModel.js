@@ -19,13 +19,14 @@ var DinnerModel = function() {
     ////////////////////////////////////////////////////
     /////////////DETTA HAR JAG LAGT TILL////////////////
     var _this = this;
-    this.dishCasheChanged = new Event();
+    this.dishCashChanged = new Event();
     this.dishCash = {};
 
 
 
 
     this.getAllDishesApi = function(titleKeyword) {
+    	$("#BubblingLoad1").show();
         var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
         // var titleKeyword = "appetizer";
         // var titleKeyword = "main course";
@@ -38,12 +39,15 @@ var DinnerModel = function() {
             cache: false,
             url: url,
             success: function (data) {
-                alert('success');
-                
-                 _this.dishCash = data.Results;
+                $("#BubblingLoad1").hide();
+                _this.dishCash = data.Results;
                 // console.log("b", _this.dishCashe[0]['Title'] );
-                _this.dishCasheChanged.notifyObservers();
+                _this.dishCashChanged.notifyObservers();
                 return data.Results;
+            },
+            error: function (xhr){
+                $("#BubblingLoad1").hide();
+            	alert("Unknown error" + xhr.status)
             }
         });
     }
@@ -53,25 +57,30 @@ var DinnerModel = function() {
     	this.collectedDish = "hhhhh";
 
         this.getDishByID = function(recipeID) {
+    		$("#BubblingLoad2").show();
 
-	       var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
+	        var apiKey = "dvx6j4dEVCjgc02u8V5y928UJ4KjIO04";
 		// var recipeID = this.selectedDish;
 		// console.log(recipeID);
 		// var recipeID = 179434;
 
-		var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
-		$.ajax({
-	         type: "GET",
-	         dataType: 'json',
-	         cache: false,
-	         url: url,
-	         // connectingToAPI.notifyObservers();
-	         success: function (data) {
-	
-	            _this.collectedDish = data;
-	            _this.dishCash = data;
-	            _this.selectedDishCollected.notifyObservers(data);
-	            }
+		    var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
+			$.ajax({
+	        	type: "GET",
+	         	dataType: 'json',
+	         	cache: false,
+	         	url: url,
+	         	// connectingToAPI.notifyObservers();
+	         	success: function (data) {
+                	$("#BubblingLoad2").hide();	         	
+	            	_this.collectedDish = data;
+	            	_this.dishCash = data;
+	            	_this.selectedDishCollected.notifyObservers(data);
+	            },
+            	error: function (xhr){
+                	$("#BubblingLoad2").hide();
+            		alert("Unknown error" + xhr.status)
+            }
 	         });
 	       }
 

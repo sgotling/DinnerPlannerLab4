@@ -4,6 +4,142 @@
 <html lang="en">
 
   <head>
+  	<style>
+.bubblingG {
+text-align: center;
+width:150px;
+height:94px;
+}
+
+.bubblingG span {
+display: inline-block;
+vertical-align: middle;
+width: 19px;
+height: 19px;
+margin: 47px auto;
+background: #FFA621;
+-moz-border-radius: 94px;
+-moz-animation: bubblingG 1.3s infinite alternate;
+-webkit-border-radius: 94px;
+-webkit-animation: bubblingG 1.3s infinite alternate;
+-o-border-radius: 94px;
+-o-animation: bubblingG 1.3s infinite alternate;
+-ms-border-radius: 94px;
+-ms-animation: bubblingG 1.3s infinite alternate;
+border-radius: 94px;
+animation: bubblingG 1.3s infinite alternate;
+}
+
+#bubblingG_1 {
+-moz-animation-delay: 0.78s;
+-webkit-animation-delay: 0.78s;
+-o-animation-delay: 0.78s;
+-ms-animation-delay: 0.78s;
+animation-delay: 0.78s;
+}
+
+#bubblingG_2 {
+-moz-animation-delay: 0.39s;
+-webkit-animation-delay: 0.39s;
+-o-animation-delay: 0.39s;
+-ms-animation-delay: 0.39s;
+animation-delay: 0.39s;
+}
+
+#bubblingG_3 {
+-moz-animation-delay: 0s;
+-webkit-animation-delay: 0s;
+-o-animation-delay: 0s;
+-ms-animation-delay: 0s;
+animation-delay: 0s;
+}
+
+@-moz-keyframes bubblingG {
+0% {
+width: 19px;
+height: 19px;
+background-color:#FFA621;
+-moz-transform: translateY(0);
+}
+
+100% {
+width: 45px;
+height: 45px;
+background-color:#FFFFFF;
+-moz-transform: translateY(-39px);
+}
+
+}
+
+@-webkit-keyframes bubblingG {
+0% {
+width: 19px;
+height: 19px;
+background-color:#FFA621;
+-webkit-transform: translateY(0);
+}
+
+100% {
+width: 45px;
+height: 45px;
+background-color:#FFFFFF;
+-webkit-transform: translateY(-39px);
+}
+
+}
+
+@-o-keyframes bubblingG {
+0% {
+width: 19px;
+height: 19px;
+background-color:#FFA621;
+-o-transform: translateY(0);
+}
+
+100% {
+width: 45px;
+height: 45px;
+background-color:#FFFFFF;
+-o-transform: translateY(-39px);
+}
+
+}
+
+@-ms-keyframes bubblingG {
+0% {
+width: 19px;
+height: 19px;
+background-color:#FFA621;
+-ms-transform: translateY(0);
+}
+
+100% {
+width: 45px;
+height: 45px;
+background-color:#FFFFFF;
+-ms-transform: translateY(-39px);
+}
+
+}
+
+@keyframes bubblingG {
+0% {
+width: 19px;
+height: 19px;
+background-color:#FFA621;
+transform: translateY(0);
+}
+
+100% {
+width: 45px;
+height: 45px;
+background-color:#FFFFFF;
+transform: translateY(-39px);
+}
+
+}
+
+</style>
 	  <title>Dinner Planner</title>
 	  <meta charset='utf-8'>
 	  <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -92,7 +228,15 @@
 	    </div>     
 	  </div> <!-- /.selectdish -->
 
-	  <div id='selectPICTdish' class='col-sm-12' >  
+	  <div id='selectPICTdish' class='col-sm-12' >
+	    <div class="bubblingG" id="BubblingLoad1"> <!--download-->
+  			<span id="bubblingG_1">
+			</span>
+			<span id="bubblingG_2">
+			</span>
+			<span id="bubblingG_3">
+			</span>
+		</div>   
 	  </div> <!-- /.selectPICTdish --> 
 	</div> <!-- selectTheDishesDiv end -->
 
@@ -100,7 +244,15 @@
 
 
 	<div class='col-sm-8' id='selectedDishInformation'> 
-    <div id='dishInformaiton' class='col-sm-6'> 
+    <div id='dishInformaiton' class='col-sm-6'>
+    	<div class="bubblingG" id="BubblingLoad2"> <!--download-->
+  			<span id="bubblingG_1">
+			</span>
+			<span id="bubblingG_2">
+			</span>
+			<span id="bubblingG_3">
+			</span>
+		</div>
     </div><!-- / .dishInformaiton--> 
     <div class='col-sm-4' id='ingredientsDiv'> 
       <table class='table' id='ingTable'> 

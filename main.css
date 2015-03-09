@@ -48,7 +48,12 @@ body{
     padding: 10pt;
 }
 
-
+#BubblingLoad1{
+    display: none;
+}
+#BubblingLoad2{
+    display: none;
+}
 
 #selectTheDishesDiv{
     float: right;

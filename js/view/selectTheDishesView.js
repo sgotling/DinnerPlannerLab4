@@ -7,7 +7,7 @@ var SelectTheDishesView = function (model) {
 	model.menuChanged.addObserver(function () {
 	 	_this.show();
  	})
-	model.dishCasheChanged.addObserver(function () {
+	model.dishCashChanged.addObserver(function () {
 		_this.updateImages();
 	});
 
